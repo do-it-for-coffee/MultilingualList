@@ -71,7 +71,7 @@ class MultilingualList:
     for font_family in font_family:
         try:
             font = ImageFont.truetype( font_family, size=font_size )
-            break  # Stop searching once a font successfully loads
+            break
         except IOError:
             continue
         if font is None:
