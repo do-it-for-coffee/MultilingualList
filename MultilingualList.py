@@ -1,5 +1,6 @@
 import logging
 import os
+from pathlib import Path
 import csv
 from wordfreq import top_n_list
 import nltk
@@ -15,34 +16,37 @@ from PIL import Image, ImageDraw, ImageFont
 class MultilingualList:
 
     # Paths
-    root_path = os.path.dirname( os.path.realpath( __file__ ) )
     res_dir_name = 'resources'
+    ext_dir_name = 'external'
+    int_dir_name = 'internal'
     csv_dir_name = 'csv'
-    csv_dir_name = 'citations'
-    res_dir_name = os.path.join( root_path, res_dir_name )
-    csv_dir_path = os.path.join( root_path, csv_dir_name )
-    fr_genders_name = 'french-noun-gender.csv'
-    fr_genders_path = os.path.join( res_dir_name, fr_genders_name )
-    g_dep_name = 'gender-dependent.csv'
-    g_dep_path = os.path.join( csv_dir_path, g_dep_name )
-    omit_name = 'omit.csv'
-    omit_path = os.path.join( csv_dir_path, omit_name )
-    sp_genders_name = 'es_ancora-ud-dev.conllu.txt'
-    sp_genders_path = os.path.join( res_dir_name, sp_genders_name )
-    synsets_name = 'synsets.csv'
-    synsets_path = os.path.join( csv_dir_path, synsets_name )
     png_dir_name = 'png'
-    png_dir_path = os.path.join( root_path, png_dir_name )
+    omit_name = 'omit.csv'
+    g_dep_name = 'gender-dependent.csv'
+    fr_genders_name = 'french-noun-gender.csv'
+    sp_genders_name = 'es_ancora-ud-dev.conllu.txt'
+    synsets_name = 'synsets.csv'
     cit_dir_name = 'citations'
-    cit_dir_path = os.path.join( root_path, cit_dir_name )
     cit_name = '-citations.bib'
+    root_path = os.path.dirname( os.path.realpath( __file__ ) )
+    res_dir_path = os.path.join( root_path, res_dir_name )
+    ext_dir_path = os.path.join( res_dir_path, ext_dir_name )
+    int_dir_path = os.path.join( res_dir_path, int_dir_name )
+    csv_dir_path = os.path.join( root_path, csv_dir_name )
+    png_dir_path = os.path.join( root_path, png_dir_name )
+    cit_dir_path = os.path.join( root_path, cit_dir_name )
+    fr_genders_path = os.path.join( ext_dir_path, fr_genders_name )
+    sp_genders_path = os.path.join( ext_dir_path, sp_genders_name )
+    g_dep_path = os.path.join( int_dir_path, g_dep_name )
+    omit_path = os.path.join( int_dir_path, omit_name )
+    synsets_path = os.path.join( csv_dir_path, synsets_name )
 
     # Variables
     nltk_resources = [ [ 'corpora', 'wordnet' ],
                        [ 'corpora', 'omw-2.0' ],
                        [ 'corpora', 'stopwords' ],
                        [ 'taggers', 'averaged_perceptron_tagger_eng' ] ]
-    en_n = 3701
+    en_n = 3702
     synset_dict = {}
     genders = { 'fr': None, 'sp': None }
     art = { 'fr': { 'masculine': 'le',
@@ -114,6 +118,12 @@ class MultilingualList:
 
 
     def __init__( self, en_n=None, n_slices=None, profanity_allowed=None ):
+
+        Path( self.ext_dir_path ).mkdir(parents=True, exist_ok=True)
+        Path( self.int_dir_path ).mkdir(parents=True, exist_ok=True)
+        Path( self.csv_dir_path ).mkdir(parents=True, exist_ok=True)
+        Path( self.png_dir_path ).mkdir(parents=True, exist_ok=True)
+        Path( self.cit_dir_path ).mkdir(parents=True, exist_ok=True)
 
         if en_n is not None:
             self.en_n = en_n
@@ -448,12 +458,17 @@ class MultilingualList:
     def citations( self ):
         # Citations
 
+        self.logger.info( 'Citations' )
+
         self.write_bib( 'eng' )
         self.write_bib( 'fra' )
 
 
     def write_bib ( self, lan=None ):
         # Write bib
+        
+        self.logger.info( 'Write bib' )
+        self.logger.info( f'lan {lan}' )
 
         bib = wn.citation( lan )
         
@@ -521,6 +536,6 @@ class MultilingualList:
 
 if __name__ == '__main__':
     ML = MultilingualList()
+    # ML.citations()
     # ML.synset_csv()
     # ML.flashcards()
-    # ML.citations()
