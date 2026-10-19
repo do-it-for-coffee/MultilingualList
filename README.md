@@ -15,6 +15,10 @@ Some synsets were omitted due to
 
 All that had 2,000 synset IDs remaining with their part of speech and English, French and Spanish words turned into flashcards.
 
+<div align="center">
+    <img src="02962545-n.png" height="400" alt="flashcard" />
+</div>
+
 ```python
 '''
 ./citations - - - - OMW citation output directory
