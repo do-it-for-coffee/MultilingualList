@@ -48,11 +48,9 @@ ML.citations()
 ```
 
 ## BibTeX
-[^1]: [wordfreq 3.1.1](https://github.com/rspeer/wordfreq) - Apache License 2.0
+<details>
+<summary>OMW v2 English</summary>
 
-[^2]: [Open Multilingual Wordnet (OMW) 2.0](https://omwn.org/omw2.html) - Apache License 2.0
-
-[^3]: OMW v2 English - Princeton WordNet 3.0
 ```bibtex
 @book{_Fellbaum:1998,
   booktitle =	 "{WordNet}: An Electronic Lexical Database",
@@ -63,10 +61,14 @@ ML.citations()
 }
 ```
 
-[^4]: OMW v2 French - CeCILL-C
+</details>
+
+<details>
+<summary>OMW v2 French</summary>
+
 ```bibtex
 @InProceedings{Sagot:Fiser:2008,
-  author =	 {Beno\^{i}t Sagot and Darja Fi\v{s}er},
+  author =	 {Benoît Sagot and Darja Fišer},
   title =	 {Building a free {French} wordnet from multilingual
                   resources},
   booktitle =	 {Proceedings of the Sixth International Language
@@ -77,7 +79,11 @@ ML.citations()
 }
 ```
 
-[^5]: OMW v2 Spanish - CC BY 3.0
+</details>
+
+<details>
+<summary>OMW v2 Spanish</summary>
+
 ```bibtex
 @InProceedings{Gonzalez-Agirre:Laparra:Rigau:2012,
   author =	 "Aitor Gonzalez-Agirre and Egoitz Laparra and German
@@ -90,6 +96,18 @@ ML.citations()
   address =	 "Matsue",
 }
 ```
+
+</details>
+
+[^1]: [wordfreq 3.1.1](https://github.com/rspeer/wordfreq) - Apache License 2.0
+
+[^2]: [Open Multilingual Wordnet (OMW) 2.0](https://omwn.org/omw2.html) - Apache License 2.0
+
+[^3]: OMW v2 English - Princeton WordNet 3.0
+
+[^4]: OMW v2 French - CeCILL-C
+
+[^5]: OMW v2 Spanish - CC BY 3.0
 
 [^6]: [French Noun Gender Dataset](https://m-or-f.com/french-noun-gender-dataset) - Lesser General Public License For Linguistic Resources (LGPL-LR)
 
