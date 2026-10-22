@@ -19,7 +19,7 @@ All that had 2,000 synset IDs remaining with their part of speech and English, F
     <img src="02962545-n.png" height="400" alt="flashcard" />
 </div>
 
-Showing the entire article le instead of l'argent shows the words' gender.
+Showing the entire article le in words like l'argent shows the words' gender.
 
 ```python
 '''
